@@ -22,3 +22,23 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# VSCode settings
+.vscode/
+
+# Windows system files
+Thumbs.db
+ehthumbs.db
+
+# Optional: OS trash
+.Trash-*/
+
+# Optional: log output
+logs/
+*.log
+
+# Optional: coverage reports
+coverage/
+
+# Optional: local env files
+.env.*.local
