@@ -1,0 +1,12 @@
+---
+const navLinks = [
+    { name: "Inicio", href: "/" },
+    { name: "Servicios", href: "#servicios" },
+    { name: "Testimonios", href: "#testimonios" },
+    { name: "Contacto", href: "#contacto" },
+];
+import HeaderMenu from "./HeaderMenu.jsx";
+---
+
+
+<HeaderMenu navLinks={navLinks} client:load />

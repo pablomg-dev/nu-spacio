@@ -1,0 +1,47 @@
+---
+// Testimonios destacados (puedes agregar más)
+const testimonios = [
+    {
+        nombre: "Yanina S.",
+        texto: "La Maestra Holistica Mónica Alicia Barneda es una persona muy cálida y amable; con un gran sentido de empatía. Está permanentemente atenta a todos los detalles... Las sesiones de Reiki han sido una hermosa experiencia.",
+        ubicacion: "Buenos Aires, Argentina",
+    },
+    {
+        nombre: "Roxana L.",
+        texto: "Excelente nivel de profesionalismo. Para mi fue un placer haber llegado al Centro Holistico Saint Germain y haber conocido a Mónica Alicia Barneda, un ser de conocimiento, sabiduría y también calidez.",
+        ubicacion: "Buenos Aires, Argentina",
+    },
+    {
+        nombre: "Sebastian Y.",
+        texto: "Cuando llegué al Centro Holístico Saint Germain, tuve una corazonada que era el lugar que tanto estaba buscando... Desde ese día, mi alma está en el camino correcto.",
+        ubicacion: "Buenos Aires, Argentina",
+    },
+];
+---
+
+<section class="py-16 bg-violet-50">
+    <h2
+        class="text-2xl md:text-4xl font-serif text-violet-800 font-bold text-center mb-10"
+    >
+        Testimonios
+    </h2>
+    <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto"
+    >
+        {
+            testimonios.map((testimonio) => (
+                <div class="bg-white rounded-xl shadow p-6 border border-violet-100">
+                    <p class="text-gray-700 italic mb-4">
+                        “{testimonio.texto}”
+                    </p>
+                    <div class="text-violet-700 font-semibold">
+                        {testimonio.nombre}
+                    </div>
+                    <div class="text-xs text-gray-500">
+                        {testimonio.ubicacion}
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+</section>
