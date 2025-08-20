@@ -2,24 +2,36 @@
 // Hero principal con imagen y frase
 ---
 
-<section
-    class="relative flex flex-col items-center justify-center min-h-[60vh] bg-gradient-to-b from-violet-100 to-white text-center py-12 px-4"
->
-    <img
-        src="https://centroholisticosaintgermain.com/wp-content/uploads/2021/01/frontvideomonica2.webp"
-        alt="Centro Holístico Saint Germain"
-        class="w-full max-w-2xl rounded-xl shadow-lg mb-8 object-cover"
-        loading="lazy"
-    />
-    <h1
-        class="text-3xl md:text-5xl font-serif text-violet-800 font-bold mb-4 drop-shadow"
-    >
-        Todos buscamos sentirnos plenos,<br /><span class="text-violet-600"
-            >tenemos que darnos cuenta que nuestro principal obstáculo para
-            lograrlo somos nosotros mismos.</span>
-    </h1>
-    <p class="text-lg md:text-2xl text-gray-700 max-w-2xl mx-auto">
-        Centro Holístico Saint Germain de Capacitación en Terapias Alternativas
-        y Ciencias Espirituales para la Elevación de la Consciencia.
-    </p>
+
+<section class="relative flex flex-col items-center justify-end min-h-[80vh] w-full overflow-hidden bg-gray-100">
+    <!-- Video de fondo -->
+
+    <video
+        src="/video1.mp4"
+        autoplay
+        loop
+        muted
+        playsinline
+        class="absolute inset-0 w-full h-full object-cover object-center z-0"
+        style="display:block;"
+    ></video>
+
+    <!-- Textos principales -->
+    <div class="w-full flex flex-col items-center justify-center pt-24 pb-10 px-4 relative z-10">
+        <h1 class="text-2xl md:text-4xl lg:text-5xl font-serif font-bold text-white text-center mb-2 drop-shadow-lg">
+            Bienvenidos a este maravilloso<br />
+            viaje del despertar de consciencia
+        </h1>
+        <p class="uppercase text-xs md:text-base tracking-widest text-white font-semibold text-center mb-6 drop-shadow">
+            TRASCENDÉ TUS MIEDOS Y ELEVÁ TU CONSCIENCIA PARA TRANSFORMAR TU VIDA
+        </p>
+    </div>
+
+    <!-- Logo y frase -->
+    <div class="flex flex-col items-center mb-8 relative z-10">
+    <img src="/logo1.jpeg" alt="Logo Nu-Spacio" class="h-28 w-28 md:h-36 md:w-36 rounded-full object-cover border-4 border-violet-200 shadow-lg mb-4" />
+    <div class="rounded-xl px-6 py-4 shadow text-center">
+            <div class="text-white text-sm md:text-base">Transformación y Evolución Consciente</div>
+        </div>
+    </div>
 </section>

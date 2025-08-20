@@ -1,9 +1,47 @@
 ---
-import '../styles/global.css';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+const title = "Centro Holístico Nu-Spacio";
+const description = "Centro Holístico Nu-Spacio – Capacitación en Terapias Alternativas y Ciencias Espirituales para la Elevación de la Consciencia.";
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 ---
 
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content={description} />
+	<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+	<meta name="generator" content={Astro.generator} />
+	<title>{title}</title>
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Limelight&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+		rel="stylesheet"
+	/>
+	<!-- Font Awesome -->
+	<link
+		rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+	/>
+	<!-- SEO Mejorado -->
+	<meta name="keywords" content="terapias alternativas, reiki, astrología, biodescodificación, Nu-Spacio, espiritualidad, Buenos Aires, Bella Vista, capacitación holística" />
+	<meta name="author" content="Centro Holístico Nu-Spacio" />
+	<link rel="canonical" href="https://centroholisticonu-spacio.com/" />
+	<!-- Open Graph -->
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content={title} />
+	<meta property="og:description" content={description} />
+	<meta property="og:url" content="https://centroholisticonu-spacio.com/" />
+	<meta property="og:image" content="https://centroholisticonu-spacio.com/logo.jpeg" />
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={title} />
+	<meta name="twitter:description" content={description} />
+	<meta name="twitter:image" content="https://centroholisticonu-spacio.com/logo.jpeg" />
+	<meta name="twitter:site" content="@centroholisticonu-spacio" />
+</head>
 
 <Header />
 <main class="pt-20">
