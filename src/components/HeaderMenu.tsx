@@ -1,13 +1,22 @@
 import React, { useState } from "react";
 
-export default function HeaderMenu({ navLinks }) {
+interface NavLink {
+    href: string;
+    name: string;
+}
+
+interface HeaderMenuProps {
+    navLinks: NavLink[];
+}
+
+const HeaderMenu: React.FC<HeaderMenuProps> = ({ navLinks }) => {
     const [open, setOpen] = useState(false);
     return (
         <header className="w-full bg-white shadow-md fixed top-0 left-0 z-50">
             <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-3 md:py-4">
                 <a href="/" className="flex items-center gap-2">
-                        <img src="/logo1.jpeg" alt="Logo Nu-Spacio" className="h-12 w-12 object-cover rounded-full bg-white border border-violet-200" />
-                    <span className="font-serif text-xl font-bold text-blue-800">Nu-Spacio</span>
+                    <img src="/logo1.jpeg" alt="Logo Nu-Spacio" className="h-12 w-12 object-cover rounded-full bg-white border border-violet-200" />
+                    <span className="text-xl font-bold text-blue-800 font-montserrat">Nu-Spacio</span>
                 </a>
                 <nav className="hidden md:flex gap-8">
                     {navLinks.map(link => (
@@ -40,4 +49,6 @@ export default function HeaderMenu({ navLinks }) {
             </nav>
         </header>
     );
-}
+};
+
+export default HeaderMenu;
