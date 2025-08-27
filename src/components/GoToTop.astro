@@ -1,0 +1,32 @@
+<button
+  id="to-top-button"
+  title="Ir arriba"
+  class="fixed z-50 bottom-8 right-8 w-12 h-12 rounded-full bg-blue-800 text-white hover:bg-blue-700 transition-all duration-300 flex items-center justify-center shadow-lg opacity-0 pointer-events-none cursor-pointer"
+>
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+  const toTopButton = document.getElementById('to-top-button');
+
+  if (toTopButton) {
+    // Mostrar el botón al hacer scroll
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 600) {
+        toTopButton.classList.remove('opacity-0', 'pointer-events-none');
+        toTopButton.classList.add('opacity-100', 'pointer-events-auto');
+      } else {
+        toTopButton.classList.remove('opacity-100', 'pointer-events-auto');
+        toTopButton.classList.add('opacity-0', 'pointer-events-none');
+      }
+    });
+
+    // Scroll hacia arriba al hacer clic
+    toTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    });
+  }
+</script>

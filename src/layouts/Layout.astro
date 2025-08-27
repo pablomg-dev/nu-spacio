@@ -5,6 +5,7 @@ const description =
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import GoToTop from "../components/GoToTop.astro";
 ---
 
 <head>
@@ -51,6 +52,7 @@ import Footer from "../components/Footer.astro";
 		content="https://centroholisticonu-spacio.com/logo.jpeg"
 	/>
 	<meta name="twitter:site" content="@centroholisticonu-spacio" />
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 </head>
 
 <Header />
@@ -58,3 +60,10 @@ import Footer from "../components/Footer.astro";
 	<slot />
 </main>
 <Footer />
+<GoToTop />
+<script is:inline src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script is:inline>
+	AOS.init({
+		once: true, // La animación debe ocurrir solo una vez
+	});
+</script>
