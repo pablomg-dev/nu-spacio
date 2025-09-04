@@ -1,43 +1,54 @@
-# Astro Starter Kit: Minimal
 
-```sh
-npm create astro@latest -- --template minimal
-```
+# 🚀 Nu Spacio Web 🌌
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+¡Bienvenido al repositorio oficial del sitio web de **Nu Spacio**! Un espacio digital moderno, elegante y performante construido con las últimas tecnologías web para ofrecer una experiencia de usuario excepcional.
 
-## 🚀 Project Structure
+## ✨ Sobre el Proyecto
 
-Inside of your Astro project, you'll see the following folders and files:
+Este proyecto es la cara digital de Nu Spacio, una plataforma diseñada para mostrar nuestros servicios, testimonios y filosofía. El sitio está construido para ser rápido, accesible y totalmente responsivo, asegurando una navegación fluida en cualquier dispositivo.
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## 🛠️ Pila de Tecnologías (Tech Stack)
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Este proyecto ha sido posible gracias a un conjunto de herramientas modernas y eficientes:
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+-   **[Astro](https://astro.build/) 🚀** - El framework web para construir sitios rápidos y centrados en el contenido.
+-   **[React](https://react.dev/) ⚛️** - Para crear componentes de UI interactivos y dinámicos.
+-   **[Tailwind CSS](https://tailwindcss.com/) 🎨** - Un framework CSS "utility-first" para un diseño rápido y personalizado.
+-   **[TypeScript](https://www.typescriptlang.org/) 🔵** - Para un código más robusto, seguro y mantenible.
 
-Any static assets, like images, can be placed in the `public/` directory.
+## 🏁 Primeros Pasos
 
-## 🧞 Commands
+¿Quieres ejecutar este proyecto en tu máquina local? ¡Sigue estos sencillos pasos!
 
-All commands are run from the root of the project, from a terminal:
+### Pre-requisitos
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Asegúrate de tener [Node.js](https://nodejs.org/) (versión 18 o superior) instalado en tu sistema.
 
-## 👀 Want to learn more?
+### Instalación
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+1.  **Clona el repositorio:**
+    ```sh
+    git clone https://github.com/tu-usuario/nu-spacio-web.git
+    ```
+2.  **Navega al directorio del proyecto:**
+    ```sh
+    cd nu-spacio-web
+    ```
+3.  **Instala las dependencias:**
+    ```sh
+    npm install
+    ```
+
+## ⚙️ Comandos Disponibles
+
+Una vez instalado, puedes usar los siguientes scripts de `npm`:
+
+| Comando           | Descripción                                             |
+| ----------------- | ------------------------------------------------------- |
+| `npm run dev`     | 🚀 Inicia el servidor de desarrollo en `localhost:4321`.  |
+| `npm run build`   | 📦 Compila el sitio para producción en la carpeta `dist/`. |
+| `npm run preview` | 🔍 Inicia un servidor local para previsualizar el build.  |
+
+---
+
+¡Gracias por visitar nuestro proyecto! Si tienes alguna idea o sugerencia, no dudes en abrir un *issue* o un *pull request*.
