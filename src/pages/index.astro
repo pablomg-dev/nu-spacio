@@ -1,4 +1,44 @@
 ---
+// ========= PÁGINA DE MANTENIMIENTO ACTIVA =========
+// No hay importación de layout
+import "../styles/global.css"; // Importa los estilos globales directamente
+---
+
+<!-- ========= PÁGINA DE MANTENIMIENTO ACTIVA ========= -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <meta name="generator" content={Astro.generator} />
+  <title>Sitio en Mantenimiento</title>
+  
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <main class="flex items-center justify-center min-h-screen text-center mx-4 bg-white">
+    <div class="bg-stone-100 p-8 sm:p-12 rounded-2xl shadow-2xl max-w-lg w-full">
+	  <img src="/logo1.jpeg" alt="Logo Nu-Spacio" class="w-28 h-28 mx-auto mb-6 rounded-full">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-800 mb-4">Sitio en Mantenimiento</h1>
+      <p class="text-lg sm:text-xl text-blue-600">Estamos realizando algunas mejoras. Volveremos a estar en línea muy pronto.</p>
+    </div>
+  </main>
+</body>
+</html>
+
+
+{/* ===============================================
+      CÓDIGO ORIGINAL DE LA PÁGINA
+    ===============================================
+
+---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import Servicios from '../components/Servicios.astro';
@@ -10,3 +50,5 @@ import Testimonios from '../components/Testimonios.astro';
 	<Servicios />
 	<Testimonios />
 </Layout>
+
+*/}
