@@ -3,11 +3,11 @@
 const servicios = [
     {
         nombre: "Consulta Astrológica",
-        url: "https://centroholisticosaintgermain.com/servicios/online-presencial/consulta-astrologica/",
+        url: "/consulta-astrologica",
     },
     {
-        nombre: "Consulta Coaching Ontológico",
-        url: "https://centroholisticosaintgermain.com/servicios/online-presencial/consulta-coaching-ontologico/",
+        nombre: "Programación Neurolingüística (PNL)",
+        url: "/programacion-neurolinguistica",
     },
     {
         nombre: "Consulta Tarot Transpersonal",
@@ -28,7 +28,7 @@ const servicios = [
 ];
 ---
 
-<section class="py-16 bg-white">
+<section id="servicios" class="py-16 bg-white">
     <h2
     class="text-2xl md:text-4xl text-blue-800 font-bold text-center mb-10" data-aos="fade-up" data-aos-duration="1000"
     >
@@ -38,22 +38,31 @@ const servicios = [
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto"
     >
         {
-            servicios.map((servicio, index) => (
-                <a
-                    href={servicio.url}
-                    target="_blank"
-                    rel="noopener"
-                    class="block bg-violet-50 hover:bg-violet-100 transition rounded-xl shadow p-6 text-center border border-violet-100"    
-                    data-aos="fade-up"
-                    data-aos-duration="1000"
-                    data-aos-delay={index * 200}
-                >
-                    <h3 class="text-xl font-semibold text-blue-800 mb-2">
-                        {servicio.nombre}
-                    </h3>
-                    <span class="text-blue-800 font-bold">Ver más</span>
-                </a>
-            ))
+            servicios.map((servicio, index) => {
+                const isLocal = servicio.url.startsWith('/');
+                return (
+                    <a
+                        href={servicio.url}
+                        target={isLocal ? '_self' : '_blank'}
+                        rel={isLocal ? '' : 'noopener'}
+                        class="block bg-violet-50 hover:bg-violet-100 transition rounded-xl shadow p-6 text-center border border-violet-100"    
+                        data-aos="fade-up"
+                        data-aos-duration="1000"
+                        data-aos-delay={index * 200}
+                    >
+                        <h3 class="text-xl font-semibold text-blue-800 mb-2">
+                            {servicio.nombre}
+                        </h3>
+                        {servicio.nombre === "Consulta Astrológica" && (
+                            <img src="/consulta-astrologica.jpg" alt="Consulta Astrológica" class="w-full h-auto rounded-lg my-4" />
+                        )}
+                        {servicio.nombre === "Programación Neurolingüística (PNL)" && (
+                            <img src="/pnl1.png" alt="Programación Neurolingüística (PNL)" class="w-full h-auto rounded-lg my-4" />
+                        )}
+                        <span class="text-blue-800 font-bold">Ver más</span>
+                    </a>
+                )
+            })
         }
     </div>
 </section>

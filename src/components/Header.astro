@@ -1,9 +1,16 @@
 ---
 const navLinks = [
     { name: "Inicio", href: "/" },
-    { name: "Servicios", href: "#servicios" },
-    { name: "Testimonios", href: "#testimonios" },
-    { name: "Contacto", href: "#contacto" },
+    {
+        name: "Servicios", 
+        href: "/#servicios",
+        children: [
+            { name: "Consulta Astrológica", href: "/consulta-astrologica" },
+            { name: "Programación Neurolingüística (PNL)", href: "/programacion-neurolinguistica" },
+        ]
+    },
+    { name: "Testimonios", href: "/#testimonios" },
+    { name: "Contacto", href: "/#contacto" },
 ];
 import HeaderMenu from "./HeaderMenu.jsx";
 ---
