@@ -66,10 +66,10 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({ navLinks }) => {
                             {link.children ? (
                                 <>
                                     <div className="flex items-center gap-1">
-                                        <a href={link.href} onClick={(e) => handleLinkClick(e, link.href)} className="text-blue-800 font-medium hover:text-blue-600 transition">{link.name}</a>
+                                        <a href={link.href} onClick={(e) => handleLinkClick(e, link.href)} className="text-blue-800 font-medium hover:text-yellow-400 transition">{link.name}</a>
                                         <button 
                                             onClick={() => handleDesktopSubMenuToggle(link.name)}
-                                            className="text-blue-800 font-medium hover:text-blue-600 transition"
+                                            className="text-blue-800 font-medium hover:text-yellow-400 transition"
                                         >
                                             <svg className={`h-4 w-4 transform transition-transform duration-300 ${openDesktopSubMenu === link.name ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
@@ -80,12 +80,12 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({ navLinks }) => {
                                         className={`absolute top-full left-0 mt-2 w-48 bg-white shadow-lg rounded-md py-2 transition-opacity duration-300 ${openDesktopSubMenu === link.name ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
                                     >
                                         {link.children.map(child => (
-                                            <a key={child.href} href={child.href} className="block px-4 py-2 text-blue-800 hover:bg-violet-100">{child.name}</a>
+                                            <a key={child.href} href={child.href} className="block px-4 py-2 text-blue-800 hover:text-yellow-400">{child.name}</a>
                                         ))}
                                     </div>
                                 </>
                             ) : (
-                                <a href={link.href} onClick={(e) => handleLinkClick(e, link.href)} className="text-blue-800 font-medium hover:text-blue-600 transition">{link.name}</a>
+                                <a href={link.href} onClick={(e) => handleLinkClick(e, link.href)} className="text-blue-800 font-medium hover:text-yellow-400 transition">{link.name}</a>
                             )}
                         </div>
                     ))}
@@ -114,8 +114,8 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({ navLinks }) => {
                             {link.children ? (
                                 <>
                                     <div className="flex justify-between items-center">
-                                        <a href={link.href} className="text-blue-800 text-lg font-medium hover:text-blue-600 transition" onClick={(e) => {handleLinkClick(e, link.href); setOpen(false);}}>{link.name}</a>
-                                        <button onClick={() => handleSubMenuToggle(link.name)} className="text-blue-800 text-lg font-medium hover:text-blue-600 transition">
+                                        <a href={link.href} className="text-blue-800 text-lg font-medium hover:text-yellow-400 transition" onClick={(e) => {handleLinkClick(e, link.href); setOpen(false);}}>{link.name}</a>
+                                        <button onClick={() => handleSubMenuToggle(link.name)} className="text-blue-800 text-lg font-medium hover:text-yellow-400 transition">
                                             <svg className={`h-5 w-5 transform transition-transform duration-300 ${openSubMenu === link.name ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                                             </svg>
@@ -124,13 +124,13 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({ navLinks }) => {
                                     <ul className={`pl-4 mt-2 ${openSubMenu === link.name ? 'block' : 'hidden'}`}>
                                         {link.children.map(child => (
                                             <li key={child.href} className="mt-2">
-                                                <a href={child.href} className="text-blue-800 text-base font-medium hover:text-blue-600 transition" onClick={() => setOpen(false)}>{child.name}</a>
+                                                <a href={child.href} className="text-blue-800 text-base font-medium hover:text-yellow-400 transition" onClick={() => setOpen(false)}>{child.name}</a>
                                             </li>
                                         ))}
                                     </ul>
                                 </>
                             ) : (
-                                <a href={link.href} className="text-blue-800 text-lg font-medium hover:text-blue-600 transition" onClick={(e) => {handleLinkClick(e, link.href); setOpen(false);}}>{link.name}</a>
+                                <a href={link.href} className="text-blue-800 text-lg font-medium hover:text-yellow-400 transition" onClick={(e) => {handleLinkClick(e, link.href); setOpen(false);}}>{link.name}</a>
                             )}
                         </li>
                     ))}
