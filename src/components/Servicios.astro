@@ -4,18 +4,17 @@ const servicios = [
     {
         nombre: "Consulta Astrológica",
         url: "/consulta-astrologica",
+        imgSrc: '/consulta-astrologica-2.jpg',
     },
     {
         nombre: "Programación Neurolingüística (PNL)",
         url: "/programacion-neurolinguistica",
+        imgSrc: '/pnl3.jpg',
     },
     {
         nombre: "Consulta Tarot Transpersonal",
-        url: "/#",
-    },
-    {
-        nombre: "Consulta en Terapia Floral",
-        url: "/#",
+        url: "/consulta-tarot",
+        imgSrc: '/consulta-tarot.jpg',
     },
 ];
 ---
@@ -46,11 +45,8 @@ const servicios = [
                             <h3 class="text-xl font-semibold text-blue-800 mb-2 flex items-center justify-center h-24" data-aos="fade-up">
                                 {servicio.nombre}
                             </h3>
-                            {servicio.nombre === "Consulta Astrológica" && (
-                                <img src="/consulta-astrologica.jpg" alt="Consulta Astrológica" class="w-full h-auto rounded-lg my-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500" />
-                            )}
-                            {servicio.nombre === "Programación Neurolingüística (PNL)" && (
-                                <img src="/pnl2.png" alt="Programación Neurolingüística (PNL)" class="w-full h-auto rounded-lg my-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500" />
+                            {servicio.imgSrc && (
+                                <img src={servicio.imgSrc} alt={servicio.nombre} class="w-full h-auto rounded-lg my-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500" />
                             )}
                         </div>
                         <span class="text-yellow-400 font-bold mt-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="700">Ver más</span>
