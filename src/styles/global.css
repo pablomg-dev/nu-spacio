@@ -1,9 +1,6 @@
 @import "tailwindcss";
 
 /* Tipografías globales */
-@import "tailwindcss";
-
-/* Tipografías globales */
 body {
     font-family: 'Inter', sans-serif;
 }
