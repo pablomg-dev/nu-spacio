@@ -35,7 +35,14 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({ navLinks }) => {
             if (window.location.pathname === '/') {
                 e.preventDefault();
                 const targetSelector = href.substring(1);
-                window.smoothScrollTo(targetSelector);
+                if (typeof (window as any).smoothScrollTo === 'function') {
+                    (window as any).smoothScrollTo(targetSelector);
+                } else {
+                    const el = document.querySelector(targetSelector);
+                    if (el) {
+                        el.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
             }
         }
     };
