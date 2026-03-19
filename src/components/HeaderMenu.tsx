@@ -63,13 +63,16 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({ navLinks }) => {
                 <nav className="hidden md:flex gap-8" ref={menuRef}>
                     {navLinks.map(link => (
                         <div key={link.name} className="relative">
-                            {link.children ? (
+                    {link.children ? (
                                 <>
                                     <div className="flex items-center gap-1">
-                                        <a href={link.href} onClick={(e) => handleLinkClick(e, link.href)} className="text-blue-800 font-medium hover:text-yellow-400 transition">{link.name}</a>
+                                        <a href={link.href} onClick={(e) => handleLinkClick(e, link.href)} className="text-blue-800 font-medium hover:text-yellow-400 transition" aria-label={`${link.name} link`}>{link.name}</a>
                                         <button 
                                             onClick={() => handleDesktopSubMenuToggle(link.name)}
                                             className="text-blue-800 font-medium hover:text-yellow-400 transition"
+                                            aria-label={`Mostrar submenú ${link.name}`}
+                                            aria-expanded={openDesktopSubMenu === link.name}
+                                            aria-controls={`desktop-submenu-${link.name}`}
                                         >
                                             <svg className={`h-4 w-4 transform transition-transform duration-300 ${openDesktopSubMenu === link.name ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
@@ -77,15 +80,18 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({ navLinks }) => {
                                         </button>
                                     </div>
                                     <div 
-                                        className={`absolute top-full left-0 mt-2 w-48 bg-white shadow-lg rounded-md py-2 transition-opacity duration-300 ${openDesktopSubMenu === link.name ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+                                        id={`desktop-submenu-${link.name}`}
+                                        role="menu"
+                                        aria-label={`${link.name} submenu`}
+                                        className={`absolute top-full left-0 mt-2 w-48 bg-white shadow-lg rounded-md py-2 transition-opacity duration-300 ${openDesktopSubMenu === link.name ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`} 
                                     >
                                         {link.children.map(child => (
-                                            <a key={child.href} href={child.href} className="block px-4 py-2 text-blue-800 hover:text-yellow-400">{child.name}</a>
+                                            <a key={child.href} href={child.href} className="block px-4 py-2 text-blue-800 hover:text-yellow-400" aria-label={`${child.name} subitem`} >{child.name}</a>
                                         ))}
                                     </div>
                                 </>
                             ) : (
-                                <a href={link.href} onClick={(e) => handleLinkClick(e, link.href)} className="text-blue-800 font-medium hover:text-yellow-400 transition">{link.name}</a>
+                                <a href={link.href} onClick={(e) => handleLinkClick(e, link.href)} className="text-blue-800 font-medium hover:text-yellow-400 transition" aria-label={`${link.name} link`}>{link.name}</a>
                             )}
                         </div>
                     ))}
@@ -114,17 +120,28 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({ navLinks }) => {
                             {link.children ? (
                                 <>
                                     <div className="flex justify-between items-center">
-                                        <a href={link.href} className="text-blue-800 text-lg font-medium hover:text-yellow-400 transition" onClick={(e) => {handleLinkClick(e, link.href); setOpen(false);}}>{link.name}</a>
-                                        <button onClick={() => handleSubMenuToggle(link.name)} className="text-blue-800 text-lg font-medium hover:text-yellow-400 transition">
+                                        <a href={link.href} className="text-blue-800 text-lg font-medium hover:text-yellow-400 transition" onClick={(e) => {handleLinkClick(e, link.href); setOpen(false);}} aria-label={`${link.name} link`}>{link.name}</a>
+                                        <button
+                                            onClick={() => handleSubMenuToggle(link.name)}
+                                            className="text-blue-800 text-lg font-medium hover:text-yellow-400 transition"
+                                            aria-label={`Mostrar submenú ${link.name}`}
+                                            aria-expanded={openSubMenu === link.name}
+                                            aria-controls={`mobile-submenu-${link.name}`}
+                                            id={`mobile-submenu-toggle-${link.name}`}
+                                        >
                                             <svg className={`h-5 w-5 transform transition-transform duration-300 ${openSubMenu === link.name ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                                             </svg>
                                         </button>
                                     </div>
-                                    <ul className={`pl-4 mt-2 ${openSubMenu === link.name ? 'block' : 'hidden'}`}>
+                                    <ul
+                                        id={`mobile-submenu-${link.name}`}
+                                        role="menu"
+                                        aria-labelledby={`mobile-submenu-toggle-${link.name}`}
+                                        className={`pl-4 mt-2 ${openSubMenu === link.name ? 'block' : 'hidden'}`}>
                                         {link.children.map(child => (
                                             <li key={child.href} className="mt-2">
-                                                <a href={child.href} className="text-blue-800 text-base font-medium hover:text-yellow-400 transition" onClick={() => setOpen(false)}>{child.name}</a>
+                                                <a href={child.href} className="text-blue-800 text-base font-medium hover:text-yellow-400 transition" onClick={() => setOpen(false)} aria-label={`${child.name} subitem`}>{child.name}</a>
                                             </li>
                                         ))}
                                     </ul>
