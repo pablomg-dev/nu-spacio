@@ -85,8 +85,8 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({ navLinks }) => {
                                         aria-label={`${link.name} submenu`}
                                         className={`absolute top-full left-0 mt-2 w-48 bg-white shadow-lg rounded-md py-2 transition-opacity duration-300 ${openDesktopSubMenu === link.name ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`} 
                                     >
-                                        {link.children.map(child => (
-                                            <a key={child.href} href={child.href} className="block px-4 py-2 text-blue-800 hover:text-yellow-400" aria-label={`${child.name} subitem`} >{child.name}</a>
+                                    {link.children.map(child => (
+                                            <a key={child.href} href={child.href} className="block px-4 py-2 text-blue-800 hover:text-yellow-400" aria-label={`${child.name} subitem`} role="menuitem">{child.name}</a>
                                         ))}
                                     </div>
                                 </>
@@ -141,7 +141,7 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({ navLinks }) => {
                                         className={`pl-4 mt-2 ${openSubMenu === link.name ? 'block' : 'hidden'}`}>
                                         {link.children.map(child => (
                                             <li key={child.href} className="mt-2">
-                                                <a href={child.href} className="text-blue-800 text-base font-medium hover:text-yellow-400 transition" onClick={() => setOpen(false)} aria-label={`${child.name} subitem`}>{child.name}</a>
+                                                <a href={child.href} className="text-blue-800 text-base font-medium hover:text-yellow-400 transition" onClick={() => setOpen(false)} aria-label={`${child.name} subitem`} role="menuitem">{child.name}</a>
                                             </li>
                                         ))}
                                     </ul>
