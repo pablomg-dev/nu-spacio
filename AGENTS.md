@@ -11,56 +11,38 @@ This document provides guidance for agents working on the Nu-Spacio website code
 ## Build Commands
 
 ```bash
-# Development
-npm run dev           # Start Astro dev server
-
-# Build
-npm run build         # Build for production
-npm run preview       # Preview production build
-
-# Astro CLI
-npm run astro dev    # Run Astro commands
-npm run astro build
-npm run astro preview
+npm run dev       # Start Astro dev server
+npm run build     # Build for production
+npm run preview   # Preview production build
+npm run astro     # Run Astro CLI commands
 ```
 
-**Note**: No testing framework is currently configured. Do not add tests unless explicitly requested.
-
-**Note**: No linting tools are configured. Do not add ESLint or Prettier unless explicitly requested.
+**Note**: No testing or linting framework is configured. Do not add them unless explicitly requested.
 
 ## Project Structure
 
 ```
-nu-spacio-web/
-├── src/
-│   ├── components/     # Astro components (.astro) and React (.tsx)
-│   ├── layouts/       # Astro layouts
-│   ├── pages/         # Astro pages (routing)
-│   ├── scripts/       # Client-side JavaScript
-│   └── styles/        # Global CSS (Tailwind)
-├── public/            # Static assets (images, videos)
-├── astro.config.mjs   # Astro configuration
-├── tailwind.config.js # Tailwind configuration
-└── tsconfig.json     # TypeScript configuration
+src/
+├── components/    # Astro (.astro) and React (.tsx) components
+├── layouts/       # Astro layouts
+├── pages/         # Astro pages (routing)
+├── scripts/       # Client-side JavaScript
+└── styles/        # Global CSS (Tailwind)
+public/            # Static assets (images, videos)
+astro.config.mjs   # Astro + Tailwind + React integration
+tailwind.config.js # Tailwind configuration
 ```
 
 ## Code Style Guidelines
 
 ### General
 
-- Use 2-space indentation
-- Use single quotes for strings
-- Use trailing commas in objects/arrays
-- Maximum line length: 100 characters (soft limit)
+- 2-space indentation, single quotes for strings, trailing commas, max 100 chars/line
 
 ### Astro Files (.astro)
 
-- Frontmatter between `---` fences at top
-- CSS classes in Tailwind utility classes
-- Props defined in frontmatter with TypeScript interfaces
-- Use `<slot />` for content projection
+- Frontmatter between `---` fences, Tailwind utility classes, TypeScript interfaces for props, `<slot />` for content projection
 
-Example:
 ```astro
 ---
 import Component from '../components/Component.astro';
@@ -81,13 +63,6 @@ const { title, description = "" } = Astro.props;
 
 ### React Components (.tsx)
 
-- Use functional components with arrow functions or `function` keyword
-- Define prop interfaces with `interface`
-- Use `React.FC<Props>` for typing (optional)
-- Hooks: `useState`, `useEffect`, `useRef` for state/effects
-- Event handlers typed with appropriate event types
-
-Example:
 ```tsx
 import React, { useState } from "react";
 
@@ -112,17 +87,15 @@ export default Component;
 
 ### TypeScript
 
-- Use strict TypeScript (extends `astro/tsconfigs/strict`)
-- Define interfaces for all data structures
-- Avoid `any` types
-- Use proper typing for event handlers
+- Strict mode (`astro/tsconfigs/strict`), interfaces for all data structures, no `any`, proper event handler typing
 
 ### Tailwind CSS
 
-- Use utility classes directly in markup
-- Custom classes only when necessary
-- Responsive: `md:`, `lg:` prefixes for breakpoints
-- Use semantic color names (e.g., `text-blue-800`, `bg-white`)
+- Utility classes in markup, custom CSS only when necessary, responsive prefixes (`md:`, `lg:`)
+
+### Solid & Functions
+
+- Keep functions under 25 lines; split complex logic into smaller helpers
 
 ### Import Conventions
 
@@ -134,51 +107,90 @@ import React, { useState, useEffect } from "react";
 import Layout from '../layouts/Layout.astro';
 import Component from '../components/Component.astro';
 
-// Relative paths (no aliases configured)
+// Astro image optimization
+import { Image } from "astro:images";
 ```
 
 ### Naming Conventions
 
-- **Components**: PascalCase (e.g., `HeaderMenu.tsx`, `Hero.astro`)
-- **Files**: kebab-case for Astro pages (e.g., `quienes-somos.astro`)
-- **Interfaces**: PascalCase with `Props` suffix (e.g., `HeaderMenuProps`)
+- **Components**: PascalCase (`HeaderMenu.tsx`, `Hero.astro`)
+- **Pages**: kebab-case (`quienes-somos.astro`)
+- **Interfaces**: PascalCase with `Props` suffix (`HeaderMenuProps`)
 - **Variables/functions**: camelCase
 
-### Error Handling
+## Web Performance
 
-- No specific error boundaries configured
-- Use try/catch for async operations
-- Console.error for debugging (temporary)
+### Images
 
-### Accessibility
+- **Always** use Astro's `<Image />` component from `astro:images` for optimized WebP/AVIF output, explicit `width`/`height`, and automatic `srcset`
 
-- Include `aria-label` on icon-only buttons
-- Use semantic HTML elements (`<header>`, `<nav>`, `<main>`, `<footer>`)
-- Ensure sufficient color contrast
+```astro
+import { Image } from "astro:images";
 
-## TypeScript Configuration
+<Image src="/logo1.jpeg" alt="Logo" width={48} height={48} />
+```
 
-The project uses strict TypeScript mode. Key settings:
-- `jsx: "react-jsx"`
-- `jsxImportSource: "react"`
-- Extends `astro/tsconfigs/strict`
+- Images below the fold: add `loading="lazy"` and `decoding="async"`
+- Hero/LCP images: preload with `<link rel="preload">` in `<head>`
+
+### Hydration
+
+- Use `client:load` only for above-the-fold interactive components (e.g., navigation menus)
+- Use `client:visible` or `client:idle` for below-the-fold interactive components
+- Avoid unnecessary React hydration — prefer static `.astro` components
+
+### External Resources
+
+- Avoid heavy icon libraries (Font Awesome, etc.); use inline SVG instead
+- Defer non-critical CSS; load external stylesheets with `media="print"` + `onload` trick if blocking
+- Load fonts with `display=swap` (already in place); consider `font-display: optional` for non-critical fonts
+
+### CLS Prevention
+
+- Always set explicit `width` and `height` on images and media
+- Reserve space with `min-height`, `aspect-ratio`, or skeleton loaders
+
+## Accesibilidad
+
+### ARIA
+
+- Icon-only buttons: always use `aria-label`
+- Interactive controls: use `aria-expanded`, `aria-controls`, `aria-haspopup` as appropriate
+- Menus: parent `role="menu"` must contain children with `role="menuitem"`
+- Use `aria-labelledby` to associate labels with regions
+
+### Contraste
+
+- Text and background must meet WCAG AA contrast ratio (4.5:1 for normal text, 3:1 for large text)
+- Avoid `text-white/60` or similar low-opacity text on colored backgrounds
+
+### Semántica HTML
+
+- Use semantic elements: `<header>`, `<nav>`, `<main>`, `<footer>`, `<section>`, `<article>`
+- Always set `<html lang="es">`
+- Every `<img>` must have a descriptive `alt` attribute
+
+## Error Handling
+
+- No error boundaries configured; use try/catch for async operations
+- Console.error for debugging only (remove before commit)
 
 ## Recommended VSCode Extensions
 
-- Astro VSCode (`astro-build.astro-vscode`) - Already recommended in .vscode/extensions.json
+- Astro VSCode (`astro-build.astro-vscode`) — already in `.vscode/extensions.json`
 
 ## Working with This Codebase
 
-1. **Creating new pages**: Add `.astro` files in `src/pages/`
-2. **Adding components**: Create in `src/components/` (use `.tsx` for React, `.astro` for Astro)
-3. **Styling**: Use Tailwind utility classes; avoid custom CSS unless necessary
-4. **Images**: Place in `public/` directory; reference with absolute paths (e.g., `/logo1.jpeg`)
+1. **New pages**: Add `.astro` files in `src/pages/`
+2. **New components**: Create in `src/components/` (`.tsx` for React, `.astro` for Astro)
+3. **Styling**: Tailwind utility classes; custom CSS only when necessary
+4. **Images**: Place in `public/`; use `<Image />` from `astro:images` for optimization
 5. **Scripts**: Client-side JS goes in `src/scripts/`
 
 ## What NOT To Do
 
 - Do not add testing frameworks (Vitest, Jest, etc.)
 - Do not add linting tools (ESLint, Prettier)
-- Do not change the framework (Astro + React)
-- Do not switch from Tailwind to other CSS frameworks
+- Do not change the framework (Astro + React) or switch from Tailwind
 - Do not add unnecessary dependencies
+- Do not use icon libraries; use inline SVG instead
